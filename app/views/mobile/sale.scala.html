@@ -1,0 +1,45 @@
+@(from: String)
+
+@mobilemain("Sale it!!!") {
+
+    sales: <div id="nbrSales"></div>
+    <button type="button" id="performSale" class="btn btn-success">Sale !!!</button>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            function rnd( to ) {
+                if ( !to ) {
+                    to = 9999;
+                }
+                return Math.floor( ( Math.random() * to ) + 1 );
+            }
+
+            function generateSale() {
+                return {
+                    id: UUID(),
+                    price: rnd(999),
+                    product: {
+                        id: UUID(),
+                        name: "iThing",
+                        description: "An awesome iThing"
+                    },
+                    vendorId: UUID()
+                };
+            }
+
+            var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket
+            var socket = new WS("ws://" + location.host + "/sales/@from")
+            $('#performSale').click(function(e) {
+                e.preventDefault();
+                var slug = generateSale();
+                socket.send(JSON.stringify(slug));
+            });
+            socket.onmessage = function(data) {
+                var json = JSON.parse(data.data);
+                $('#nbrSales').html(json.nbrSales);
+            }
+        });
+    </script>
+
+}

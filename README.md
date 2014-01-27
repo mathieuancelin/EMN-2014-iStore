@@ -209,8 +209,8 @@ une fois votre flux prêt à l'envoi, il ne reste plus qu'à en faire un service
 Utiliser l'application
 -----------------------
 
-http://localhost:9000/    =>   application mobile
-http://localhost:9000/monitoring?role=MANAGER  =>  monitoring des ventes en temps réel
+* http://localhost:9000/    =>   application mobile
+* http://localhost:9000/monitoring?role=MANAGER  =>  monitoring des ventes en temps réel
 
 Bonus: ReactiveCouchbase
 ------------------------

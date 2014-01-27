@@ -34,7 +34,7 @@ Quelques astuces utiles
 
 ```scala
 Akka.system.scheduler.scheduleOnce(FiniteDuration(0, TimeUnit.MILLISECONDS), FiniteDuration(5000, TimeUnit.MILLISECONDS)) {
-  // TODO
+  ???
 }
 ```
 
@@ -42,7 +42,7 @@ Akka.system.scheduler.scheduleOnce(FiniteDuration(0, TimeUnit.MILLISECONDS), Fin
 
 ```scala
 Akka.system.scheduler.schedule(FiniteDuration(0, TimeUnit.MILLISECONDS), FiniteDuration(5000, TimeUnit.MILLISECONDS)) {
-  // TODO
+  ???
 }
 ```
 
@@ -91,8 +91,8 @@ def sse = Action {
 * Entremeler des enumerators
 
 ```scala
-val enumerator1 = ...
-val enumerator2 = ...
+val enumerator1 = ???
+val enumerator2 = ???
 val enumerator3 = enumerator1 >- enumerator2
 ```
 
@@ -163,7 +163,7 @@ Pour capter les ventes, il vous sera possible d'utiliser un body parser Json afi
 ```scala
 def performSale = Action.async(parse.json) { request =>
   saleFmt.reads(request.body) match {
-    case JsSuccess(sale, _) => ...
+    case JsSuccess(sale, _) => ???
     case JsError(_) => ???
   }
 }

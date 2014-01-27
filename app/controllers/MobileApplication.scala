@@ -17,6 +17,8 @@ import scala.util.{Failure, Random}
 
 object MobileApplication extends Controller {
 
+  val performSaleURL = Play.configuration.getString("urls.performsale").getOrElse("http://localhost:9000/performSale")
+
   def sale(from: String) = Action {
     Ok(views.html.mobile.sale(from))
   }

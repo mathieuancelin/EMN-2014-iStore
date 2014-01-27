@@ -20,6 +20,7 @@ object StoreApplication extends Controller {
 
   def operations(from: String) = Action.async {
     val enumerator = ???
+    // génération de bruit !!!
     val noise = Enumerator.generateM[JsObject](
       Promise.timeout(Some(
         Json.obj(

@@ -134,15 +134,12 @@ Pour envoyer une vente au backend business, vous utiliserez l'API de webservices
 
 ```scala
  WS.url(myUrl).post[JsValue](mySaleAsJsValue).onComplete {
-  case Failure(_) => Logger.error("error while sending data to store app")
-  case Success(_) => Logger.info("sale sent to the store app")
+  case Failure(error) => Logger.error("error while sending data to store app")
+  case Success(response) => Logger.info("sale sent to the store app")
 }
 ```
 
 Commencez par faire des IHM simplistes afin de vous concentrer sur la partie serveur.
-
-
-
 
 Le backend business
 --------------------
@@ -156,7 +153,12 @@ Il sera nécessaire ici de consommer plusieurs services depuis le backend busine
 
 La première chose a faire est de consommer les services venant du backend business. Vous utiliserez le client webservice pour consommer les streams d'objets JSON représentant les ventes en train d'être effectuées (n'hésitez pas à utiliser la section astuces) ou les messages de status système.
 
-Il vous faudra également traiter ces ventes 
+Il vous faudra également traiter ces ventes pour prendre en compte le role de connexion (MANAGER ou EMPLOYEE) ainsi que les limites de prix de ventes.
+
+Bonus : ReactiveCouchbase
+--------------------------
+
+
 
 
 

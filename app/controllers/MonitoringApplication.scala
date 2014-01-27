@@ -13,6 +13,8 @@ import play.api.Play.current
 
 object MonitoringApplication extends Controller {
 
+  val baseUrl = Play.configuration.getString("urls.stream").getOrElse("http://localhost:9000/operations?from=%s")
+
   def index(role: String) = Action {
     Ok(views.html.monitoring.monitoring(role))
   }
@@ -20,17 +22,6 @@ object MonitoringApplication extends Controller {
   def feed(role: String, lower: Int, higher: Int) = Action {
     
     ???
-    
-    val secure: Enumeratee[Event, Event] = Enumeratee.collect[Event] {
-      case s: models.Status if role == "MANAGER" => s
-      case o@Sale(_, _, _, "public", _, _, _) => o
-      case o@Sale(_, _, _, "private",_, _, _) if role == "MANAGER" => o
-    }
-
-    val inBounds: Enumeratee[Event, Event] = Enumeratee.collect[Event] {
-      case s: models.Status => s
-      case o@Sale(_, amount, _, _, _, _, _) if amount > lower && amount < higher => o
-    }
 
     val pipeline = (lr >- paris >- nantes >- lyon)
 

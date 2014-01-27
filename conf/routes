@@ -4,6 +4,14 @@
 
 # Home page
 
+GET     /monitoring                 controllers.MonitoringApplication.index(role)
+GET     /feed                       controllers.MonitoringApplication.feed(role, lower: Int, higher: Int)
+
+GET     /operations                 controllers.StoreApplication.operations(from)
+POST    /performSale                controllers.StoreApplication.performSale
+
+GET     /sale/:from                 controllers.MobileApplication.sale(from)
+GET     /sales/:from                controllers.MobileApplication.performSale(from)
 GET     /                           controllers.MobileApplication.index
 
 # Map static resources from the /public folder to the /assets URL path

@@ -1,0 +1,16 @@
+@()
+
+@main("Welcome to Play") {
+
+    <div id="nbrSalesPerMinute">0</div> sales per minute
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var feed = new EventSource('/odometer/feed')
+            feed.onmessage = function (e) {
+                var data = JSON.parse(e.data)
+                $('#nbrSalesPerMinute').html(data.nbrSalesPerMinute)
+            }
+        });
+    </script>
+}

@@ -1,6 +1,6 @@
 @(from: String)
 
-@mobilemain("Sale it!!!") {
+@mobilemain("Welcome to Play") {
 
     sales: <div id="nbrSales"></div>
     <button type="button" id="performSale" class="btn btn-success">Sale !!!</button>
@@ -33,6 +33,8 @@
             $('#performSale').click(function(e) {
                 e.preventDefault();
                 var slug = generateSale();
+                //console.log("sending slug : ");
+                //console.log(slug);
                 socket.send(JSON.stringify(slug));
             });
             socket.onmessage = function(data) {

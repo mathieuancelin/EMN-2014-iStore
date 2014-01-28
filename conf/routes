@@ -7,6 +7,8 @@
 GET     /monitoring                 controllers.MonitoringApplication.index(role)
 GET     /feed                       controllers.MonitoringApplication.feed(role, lower: Int, higher: Int)
 
+GET     /odometer                   controllers.StoreApplication.index
+GET     /odometer/feed              controllers.StoreApplication.odometer
 GET     /operations                 controllers.StoreApplication.operations(from)
 POST    /performSale                controllers.StoreApplication.performSale
 
